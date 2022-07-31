@@ -214,7 +214,7 @@ def about():
     **Chromindex-UdeC** was born from the motivation to create a tool to facilitate the calculation of karyotype
     asymmetry indices, with the idea of speeding up research and avoiding the complex calculations behind these
     indices. Chromindex-UdeC was conceived in the context of the internship of the Data Science Unit of the
-    University of Concepción. This internship was a cooperation between the collaborators presented on the home
+    University of Concepción. This internship was a cooperation between the collaborators presented on the 🏠**Home** 
     page.
 
     To develop the **Chromindex-UdeC** program, the first step was to create a **Python** script (Rossum & Drake
