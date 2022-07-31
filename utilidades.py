@@ -8,7 +8,7 @@ import pandas as pd
 
 
 lenguajes = ["🇺🇸 Eng (USA)", "🇨🇱 Esp (Chile)"]
-paginas_navegacion_eng = ['🏠Home', '📖How to use', '🥀Index Calculation', '📃Documentation', '❓About Chromindex-UdeC']
+paginas_navegacion_eng = ['🏠Home', '📖How to use', '🥀Index calculation', '📃Documentation', '❓About Chromindex-UdeC']
 paginas_navegacion_esp = ['🏠Inicio', '📖Instrucciones', '🥀Calculo de índices', '📃Documentación', '❓Acerca de Chromindex-UdeC']
 
 def lenguaje_selectbox():
@@ -25,11 +25,11 @@ def lenguaje_selectbox():
     return lenguaje
 
 def page_radio_eng():
-    pagina = st.sidebar.radio("Navigate", paginas_navegacion_eng)
+    pagina = st.sidebar.radio("Menu", paginas_navegacion_eng)
     return pagina
 
 def page_radio_esp():
-    pagina = st.sidebar.radio("Navegar", paginas_navegacion_esp)
+    pagina = st.sidebar.radio("Menú", paginas_navegacion_esp)
     return pagina
 
 def write_espacios_sbar(n=1):
