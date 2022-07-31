@@ -22,6 +22,7 @@ def inicio():
     Computación, Universidad de Concepción, Concepción, Chile.
     """
     )
+    write_espacios(6)
 
 def instrucciones():
     st.header('Instrucciones de Uso')
@@ -29,7 +30,8 @@ def instrucciones():
     st.subheader('Paso 1:')
     st.write(
     """
-    MicroMeasure es un programa científico de análisis de imágenes, cuya aplicación está destinada a estudios citológicos, citogenéticos y
+    Tener una tabla excel generada por MicroMeasure del cariotipo a estudiar.
+    MicroMeasure un programa científico de análisis de imágenes, cuya aplicación está destinada a estudios citológicos, citogenéticos y
     estudios citotaxonómicos. Este programa recibe imágenes en un formato específico y, a través de cálculos internos, devuelve
     un excel con información importante sobre el cariotipo en estudio.
     """
@@ -40,7 +42,7 @@ def instrucciones():
     st.subheader('Paso 2:')
     st.write(
     """
-    Vaya al menú __🥀 Index Calculation - Calculos de Indices__ y haga clic en el botón para cargar archivos. Elija el archivo Excel obtenido con
+    Vaya al menú 🥀**Calculo de índices** y haga clic en el botón para cargar archivos. Elija el archivo Excel obtenido con
     MicroMeasure.
     """
     )
@@ -51,7 +53,7 @@ def instrucciones():
     st.write(
     """
     Una vez subido el archivo excel a la aplicación web, aparecerá un menú para seleccionar los índices a
-    calcular (Ver __📃 Documentation - Documentacion__ para revisar cómo se calculan los índices). Seleccione los índices que necesita y haga clic en
+    calcular (Ver 📃**Documentación** para revisar cómo se calculan los índices). Seleccione los índices que necesita y haga clic en
     en el botón _Calcular Indices_. Si todo se hizo correctamente, se mostrará una tabla que, por cada excel
     cargado (indicado por su nombre), mostrará el valor de los índices seleccionados hacia la derecha. Además, está
     la opción de descargar la tabla mostrada en formato excel haciendo clic en el botón 📥 _Descargar como Excel_.
@@ -67,7 +69,7 @@ def instrucciones():
 
     st.markdown("""En caso de tener errores al usar la aplicación, se recomienda recargar la página. \
     Si el problema persiste, puede escribir un correo al autor (alvaroo.g98@gmail.com) o crear un *Issue* \
-    en la página de <a href="https://github.com/Zekess/Indices_de_asimetria">**GitHub**</a> (Ver __📃 Documentation - Documentacion__),\
+    en la página de <a href="https://github.com/Zekess/Indices_de_asimetria">**GitHub**</a> (Ver 📃**Documentación**),\
     detallando el problema y adjuntando imágenes de ser necesario.""", unsafe_allow_html=True)
 
     st.subheader('Archivo de prueba')
@@ -100,14 +102,14 @@ def calculoIndices():
             indices_seleccionados = container_multiselect.multiselect('Multiselect', indices_nombres, indices_nombres)
         else:
             indices_seleccionados = container_multiselect.multiselect('Multiselect', indices_nombres)
-        if st.button('Calcular Indices'):
+        if st.button('Calcular índices'):
             df = pd.DataFrame(columns=['Archivo'] + indices_seleccionados)
             for uploader in lista_excels:
                 indices_clase = IndicesDesdeExcel(uploader)
                 indices_dicc = indices_clase.calcular_indices(indices_seleccionados)
                 excel_nombre = uploader.name.split('.xls')[0]
                 df.loc[len(df) + 1] = [excel_nombre] + list(indices_dicc.values())
-            df
+            st.dataframe(df)
             add_sesion_state('df_resultado', xlsdownload(df))
         if 'df_resultado' in st.session_state:
             fecha_hoy = datetime.now().strftime(r"%d-%m-%Y_%Hh%Mm%Ss")
@@ -197,18 +199,18 @@ def docu():
     Taxon 36: 526-530.</h10>", unsafe_allow_html=True)
 
 def acerca():
-    st.header('Acerca Chromindex-UdeC')
+    st.header('Acerca de Chromindex-UdeC')
 
     st.markdown(
         """
-        La citotaxonomía es una rama de la citogenética, dedicada al estudio comparativo de los rasgos cariológicos de
-        **propósitos sistemáticos y evolutivos**!! (Siljak-Yakovlev & Peruzzi 2012). Ha sido muy importante en los últimos
+        La citotaxonomía es una rama de la citogenética, dedicada al estudio comparativo de los rasgos cariológicos con propósitos
+        sistemáticos y evolutivos (Siljak-Yakovlev & Peruzzi 2012). Ha sido muy importante en los últimos
         años porque su contribución al conocimiento de la evolución y filogenia de las plantas vasculares ha permitido
         una comprensión más clara y precisa de los mecanismos implicados en la diversificación de las plantas.
 
-        Actualmente, el uso de índices de asimetría del cariotipo, tanto intra- como intercromosómicos, es ampliamente utilizado en
-        **plantas sistemática**!! (Paszko 2006; Peruzzi & Eroglu 2013). Una de las dificultades cotidianas es el uso tabular de los
-        datos generados. Normalmente, estos datos son muy numerosos y complejos de utilizar, lo que puede generar
+        Actualmente, el uso de índices de asimetría del cariotipo, tanto intra- como intercromosómicos, es ampliamente
+        utilizado en sistemática vegetal (Paszko 2006; Peruzzi & Eroglu 2013). Una de las dificultades cotidianas es el uso tabular de los
+        datos generados. Normalmente, estos datos son muy numerosos y complejos de manejar, lo cual puede provocar
         errores que pueden generar ruido en la interpretación de los resultados. Por ello, la contribución del
         programa Chromindex-UdeC puede ayudar a solucionar esta situación.
 
