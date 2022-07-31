@@ -218,7 +218,7 @@ def acerca():
         asimetría del cariotipo, con la idea de agilizar la investigación y evitar los cálculos complejos que hay detrás de estos
         índices. Chromindex-UdeC fue concebido en el contexto de las prácticas de la Unidad de Data Science de la
         Universidad de Concepción. Esta práctica fue una cooperación entre los colaboradores presentados en la página
-        de inicio.
+        de 🏠**Inicio**.
 
         Para desarrollar el programa **Chromindex-UdeC**, el primer paso fue crear un script en **Python** (Rossum & Drake
         2009) capaz de leer tablas de Excel y obtener los valores de los diferentes índices. Sin embargo, también se
